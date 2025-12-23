@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|c:\\users\\heatec\\source\\repos\\ytdownloader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|c:\\users\\heatec\\source\\repos\\ytdownloader\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|solutionrelative:frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|C:\\Users\\Heatec\\source\\repos\\YTDownloader\\frmmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{354C9431-294C-4D36-AB8D-E5DAFD2995AC}|YTDownloader.csproj|solutionrelative:frmmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,14 +67,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "Title": "FrmMain.cs",
+              "DocumentMoniker": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\FrmMain.cs",
+              "RelativeDocumentMoniker": "FrmMain.cs",
+              "ToolTip": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\FrmMain.cs",
+              "RelativeToolTip": "FrmMain.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAmwCIAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T20:32:17.845Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-23T20:57:12.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmMain.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\FrmMain.Designer.cs",
+              "RelativeDocumentMoniker": "FrmMain.Designer.cs",
+              "ToolTip": "C:\\Users\\Heatec\\source\\repos\\YTDownloader\\FrmMain.Designer.cs",
+              "RelativeToolTip": "FrmMain.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T20:55:21.815Z"
             }
           ]
         }
