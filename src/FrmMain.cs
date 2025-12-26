@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -11,7 +12,6 @@ namespace YTDownloader {
         }
 
         private void FrmMain_Load(object sender, EventArgs e) {
-
         }
 
         private async void downloadBtn_Click(object sender, EventArgs e) {
