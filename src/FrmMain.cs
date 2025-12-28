@@ -15,40 +15,106 @@ namespace YTDownloader {
         }
 
         private async void downloadBtn_Click(object sender, EventArgs e) {
-            string url = urlTxtBox.Text;
-            if (string.IsNullOrEmpty(url))
+            string ytDlpPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "tools",
+                "yt-dlp.exe"
+            );
+            string ffmpegPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "tools"
+            );
+
+            statusTextBox.Clear();
+
+            if (string.IsNullOrEmpty(urlTxtBox.Text))
             {
-                MessageBox.Show("Please enter a URL.");
+                MessageBox.Show("Please enter valid url");
+                return;
             }
 
             try
             {
-                string musicFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-                string ytDlp = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "tools",
-                    "yt-dlp.exe"
-                 );
-                string ffmpegPath = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "tools"
-                 );
-
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-
-                startInfo.FileName = ytDlp;
-                startInfo.UseShellExecute = false;
-                startInfo.CreateNoWindow = true;
-                startInfo.Arguments = "-x --audio-format mp3 --no-playlist " + $"--ffmpeg-location {ffmpegPath} " + $"-o {musicFilePath}\\%(title)s.%(ext)s {url}";
-
-                await Task.Run(() =>
-                {
-                    Process.Start(startInfo);
-                });
+                await RunYtDlpAsync(ytDlpPath, ffmpegPath, urlTxtBox.Text);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void UpdateStatus(string message)
+        {
+            if (string.IsNullOrEmpty (message))
+            {
+                return;
+            }
+
+            statusTextBox.BeginInvoke(new Action(() =>
+            {
+                statusTextBox.AppendText(text: message + Environment.NewLine);
+                statusTextBox.SelectionStart = statusTextBox.Text.Length;
+                statusTextBox.ScrollToCaret();
+            }));
+        }
+
+        private Task RunYtDlpAsync(string ytDlpPath, string ffmpegPath, string url)
+        {
+            return Task.Run(() =>
+            {
+                string musicFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+
+                var startInfo = new ProcessStartInfo()
+                {
+                    FileName = ytDlpPath,
+                    Arguments =
+                        "-x --audio-format mp3 " +
+                        "--no-playlist " +
+                        $"--ffmpeg-location {ffmpegPath} " +
+                        $"-o {musicFilePath}\\%(title)s.%(ext)s {url}",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                Process process = new Process();
+                process.StartInfo = startInfo;
+
+                process.OutputDataReceived += (sender, events) =>
+                {
+                    if (!string.IsNullOrEmpty(events.Data))
+                    {
+                        UpdateStatus(events.Data);
+                    }
+                };
+
+                process.ErrorDataReceived += (sender, events) =>
+                {
+                    if (!string.IsNullOrEmpty(events.Data))
+                    {
+                        UpdateStatus(events.Data);
+                    }
+                };
+
+                BeginInvoke(new Action(() =>
+                {
+                    statusLabel.Text = "Downloading. . . ";
+                }));
+
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+
+                process.WaitForExit();
+
+                BeginInvoke(new Action(() =>
+                {
+                    statusLabel.Text = "Done";
+                }));
+
+                process.Dispose();
+            });
         }
     }
 }
