@@ -99,7 +99,7 @@ namespace YTDownloader {
 
                 BeginInvoke(new Action(() =>
                 {
-                    statusLabel.Text = "Downloading. . . ";
+                    statusLabel.Text = "Status: Downloading. . . ";
                 }));
 
                 process.Start();
@@ -110,7 +110,7 @@ namespace YTDownloader {
 
                 BeginInvoke(new Action(() =>
                 {
-                    statusLabel.Text = "Done";
+                    statusLabel.Text = "Status: Done";
                 }));
 
                 process.Dispose();

@@ -75,9 +75,9 @@
             this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.Location = new System.Drawing.Point(12, 205);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(41, 15);
+            this.statusLabel.Size = new System.Drawing.Size(47, 15);
             this.statusLabel.TabIndex = 5;
-            this.statusLabel.Text = "label1";
+            this.statusLabel.Text = "Status: ";
             // 
             // FrmMain
             // 
