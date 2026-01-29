@@ -12,44 +12,20 @@ namespace YTDownloader {
         }
 
         private void FrmMain_Load(object sender, EventArgs e) {
-            /*
-            IF files NOT exists THEN
-                install the files
-            ENDIF
-             */
-            string ytDlpPath = Path.Combine(
+            string ffmpegBin = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "tools",
+                "ffmpeg",
+                "bin",
+                "ffmpeg.exe"
+             );
+
+            string ytdlpBin = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "tools",
+                "yt-dlp",
                 "yt-dlp.exe"
             );
-            string ffmpegPath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "tools"
-            );
-            string scriptPath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "scripts",
-                "install-ytdlp.ps1"
-            );
-
-            if (!File.Exists(ytDlpPath) || !File.Exists(ffmpegPath)) {
-                var psi = new ProcessStartInfo() {
-                    FileName = "powershell.exe",
-                    Arguments = $" -File \"{scriptPath}\"",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                };
-
-                Process process = Process.Start(psi);
-                string output = process.StandardOutput.ReadToEnd();
-                process.WaitForExit();
-
-                Console.WriteLine(output);
-
-                process.Dispose();
-            }
         }
 
         private async void downloadBtn_Click(object sender, EventArgs e) {
