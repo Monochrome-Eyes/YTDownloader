@@ -3,4 +3,5 @@ obj/
 .vs/
 *.csproj.user
 *.pfx
-tools/
+## Add binary tools to repo
+# tools/
